@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Zomato Search</string>
+    <string name="str_search_restaurants">Search Restaurants</string>
+    <string name="rs_x_for_two_people">| \u20B9%s for two</string>
+    <string name="hotel_image">Hotel image</string>
+    <string name="network_failure">Unable To connect right now.</string>
+    <string name="no_results_found">No results found for your current search.</string>
+</resources>

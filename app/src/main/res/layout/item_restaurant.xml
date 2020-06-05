@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.aastha.zomatosearch.entities.RestaurantObject" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/hotel_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadURL="@{data.thumb}"
+            tools:src="@color/design_default_color_secondary" />
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="5dp"
+            android:text="@{data.userRating.aggregateRating}"
+            android:textColor="#ffffff"
+            android:visibility="@{data.userRating.aggregateRating.equals('0')? View.GONE : View.VISIBLE}"
+            app:color_background="@{data.userRating.ratingColor}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="#a5b4"
+            tools:text="4.5" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@{data.name}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/rating"
+            app:layout_constraintStart_toEndOf="@+id/thumbnail"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="QD's Restaurant" />
+
+        <TextView
+            android:id="@+id/cuisine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{data.cuisines}"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+
+            app:layout_constraintEnd_toEndOf="@+id/name"
+            app:layout_constraintStart_toStartOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            tools:text="Casual Dining" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{data.location.localityVerbose}"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/cuisine"
+            app:layout_constraintStart_toStartOf="@+id/cuisine"
+            app:layout_constraintTop_toBottomOf="@+id/cuisine"
+            tools:text="Laxmi Nagar, Delhi" />
+
+        <TextView
+            android:id="@+id/timings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{data.timings}"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/location"
+            app:layout_constraintTop_toBottomOf="@+id/location"
+            tools:text="11:00 AM - 10:30 PM" />
+
+        <TextView
+            android:id="@+id/avgCostForTwo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{@string/rs_x_for_two_people(data.averageCostForTwo)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/timings"
+            app:layout_constraintTop_toBottomOf="@+id/timings"
+            tools:text="Rs 1100 for two" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
