@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                 }, 500)
             }
         }
+        //Initial Search so that page is not empty on Startup
         viewModel.getSearchData("+")
     }
 
